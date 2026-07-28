@@ -7,17 +7,20 @@
     
 
     # config files
-    networking_config = "sudo nvim ~/nixos-server/networking.nix";
-    alias_config = "sudo nvim ~/nixos-server/alias.nix";
+    networking-config = "sudo nvim ~/nixos-server/networking.nix";
+    alias-config = "sudo nvim ~/nixos-server/alias.nix";
     config = "sudo nvim ~/nixos-server/configuration.nix";
     
-    minecraft_config = "sudo nvim ~/nixos-server/minecraft.nix";
-    minecraft_backup_config = "sudo nvim ~/nixos-server/minecraft-backup.nix";
+    minecraft-config = "sudo nvim ~/nixos-server/minecraft.nix";
+    minecraft-backup_config = "sudo nvim ~/nixos-server/minecraft-backup.nix";
 
     # minecraft
-    minecraft_console = "sudo podman exec -it minecraft-server rcon-cli";
-    minecraft_backup = "sudo systemctl start --no-block minecraft-backup.service";
-    minecraft_backup_status = "sudo journalctl -u minecraft-backup.service -f";
-
+    minecraft-console = "sudo podman exec -it minecraft-server rcon-cli";
+    minecraft-console_logs = "sudo journalctl -fu podman-minecraft-server.service";
+    minecraft-backup = "sudo systemctl start --no-block minecraft-backup.service";
+    minecraft-backup_logs = "sudo journalctl -u minecraft-backup.service -f";
+    
+    # other
+    ip = "curl -4 ifconfig.me";
   };
 }
