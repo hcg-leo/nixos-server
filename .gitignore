@@ -1,0 +1,7 @@
+result
+result-*
+*.swp
+*~
+.DS_Store
+networking.nix
+hardware-configuration.nix
