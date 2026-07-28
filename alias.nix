@@ -19,6 +19,7 @@
     minecraft-console_logs = "sudo journalctl -fu podman-minecraft-server.service";
     minecraft-backup = "sudo systemctl start --no-block minecraft-backup.service";
     minecraft-backup_logs = "sudo journalctl -u minecraft-backup.service -f";
+    minecraft-stop = "sudo podman stop -t 60 minecraft-server";
     
     # other
     ip = "curl -4 ifconfig.me";
