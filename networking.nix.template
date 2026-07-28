@@ -1,0 +1,14 @@
+{config, pkgs, ...}:
+{
+  networking.hostName = "server";
+
+  networking.wireless.enable = true;
+  networking.wireless.userControlled = true;
+  networking.wireless.networks.EE-86FXKW.psk = "password";
+
+  networking.firewall.enable = true;
+  
+  #networking.proxy.default = "http://user:password@proxy:port/";
+  #networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+}
