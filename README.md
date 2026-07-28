@@ -24,6 +24,10 @@ cd ~
 git clone https://github.com/hcg-leo/nixos-server
 ```
 go to ``nixos-server/networking.nix`` and setup wifi (in the cloned repository) <br/>
+copy networking.nix.template to networking.nix
+```
+cp networking.nix.template networking.nix
+```
 ```
 nano nixos-server/networking.nix
 ```
