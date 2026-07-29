@@ -45,7 +45,7 @@
 
   users.users."hcg_leo" = {
     isNormalUser = true;
-    description = "Aran";
+    description = "Aran Thananjayan";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
