@@ -23,5 +23,6 @@
     
     # other
     ip = "curl -4 ifconfig.me";
+    reboot = "sudo reboot";
   };
 }
