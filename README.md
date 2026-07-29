@@ -26,7 +26,7 @@ git clone https://github.com/hcg-leo/nixos-server
 go to ``nixos-server/networking.nix`` and setup wifi (in the cloned repository) <br/>
 copy networking.nix.template to networking.nix
 ```
-cp networking.nix.template networking.nix
+cp nixos-server/networking.nix.template nixos-server/networking.nix
 ```
 ```
 nano nixos-server/networking.nix
@@ -88,3 +88,4 @@ make sure only a root user can read this file
 ```
 sudo chmod 600 /root/secrets/rclone.conf
 ```
+
