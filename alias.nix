@@ -22,7 +22,6 @@
     minecraft-stop = "sudo podman stop -t 60 minecraft-server";
     
     # other
-    ip = "curl -4 ifconfig.me";
     reboot = "sudo reboot";
   };
 }
