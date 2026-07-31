@@ -9,6 +9,7 @@
       ./networking.nix
       ./alias.nix
       ./minecraft-backup.nix
+      ./jellyfin.nix
     ];
 
   environment.systemPackages = with pkgs; [
@@ -46,7 +47,7 @@
   users.users."hcg_leo" = {
     isNormalUser = true;
     description = "Aran Thananjayan";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "jellyfin" ];
     packages = with pkgs; [];
   };
 
