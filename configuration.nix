@@ -47,7 +47,7 @@
   users.users."hcg_leo" = {
     isNormalUser = true;
     description = "Aran Thananjayan";
-    extraGroups = [ "networkmanager" "wheel" "jellyfin" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
 
