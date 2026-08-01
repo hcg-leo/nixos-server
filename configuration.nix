@@ -17,10 +17,11 @@
   git
   ];
 
-  # Bootloader.
+  # bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # locales
   time.timeZone = "Europe/London";
 
   i18n.defaultLocale = "en_GB.UTF-8";
