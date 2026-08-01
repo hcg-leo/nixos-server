@@ -9,7 +9,7 @@
       ./networking.nix
       ./alias.nix
       ./minecraft-backup.nix
-      ./jellyfin.nix
+      ./media.nix
     ];
 
   environment.systemPackages = with pkgs; [

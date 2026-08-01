@@ -89,3 +89,6 @@ make sure only a root user can read this file
 sudo chmod 600 /root/secrets/rclone.conf
 ```
 
+## Jellyfin plugins and CSS code
+CSS - abyss
+plugins - jellyfin enhanced, jellyfin-plugin-file-transform, jellyfin-plugin-media-bar

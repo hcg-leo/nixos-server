@@ -14,7 +14,7 @@
     minecraft-config = "sudo nvim ~/nixos-server/minecraft.nix";
     minecraft-backup_config = "sudo nvim ~/nixos-server/minecraft-backup.nix";
 
-    jellyfin-config = "sudo nvim ~/nixos-server/jellyfin.nix";
+    media-config = "sudo nvim ~/nixos-server/jellyfin.nix";
 
     # minecraft
     minecraft-console = "sudo podman exec -it minecraft-server rcon-cli";
