@@ -21,23 +21,18 @@
     "d /mnt/storage/movies 0775 jellyfin jellyfin -"
     "d /mnt/storage/music 0775 jellyfin jellyfin -"
     "d /mnt/storage/shows 0775 jellyfin jellyfin -"
-
-    # aran thananjayans libraries
-    "d /mnt/storage/aran_thananjayan_movies 0775 jellyfin jellyfin -"
-    "d /mnt/storage/aran_thananjayan_music 0775 jellyfin jellyfin -"
-    "d /mnt/storage/aran_thananjayan_shows 0775 jellyfin jellyfin -"
   ];
 
   users.users.hcg_leo.extraGroups = [ "jellyfin" "radarr" "sonarr" ];
 
-  # radarr
+  # radarr - movies
   services.radarr = {
     enable = true;
     openFirewall = true;
     group = "jellyfin";
   };
 
-  # sonarr
+  # sonarr - shows
   services.sonarr = {
     enable = true;
     openFirewall = true;
@@ -46,6 +41,20 @@
 
   # seerr
   services.seerr = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  # qbittorrent - download client
+  services.qbittorrent = {
+    enable = true;
+    group = "jellyfin";
+    openFirewall = true;
+    webuiPort = 8080;
+  };
+
+  # prowlarr - indexer
+  services.prowlarr = {
     enable = true;
     openFirewall = true;
   };
