@@ -89,6 +89,44 @@ make sure only a root user can read this file
 sudo chmod 600 /root/secrets/rclone.conf
 ```
 
-## Jellyfin plugins and CSS code
-CSS - abyss
-plugins - jellyfin enhanced, jellyfin-plugin-file-transform, jellyfin-plugin-media-bar
+# media config
+## create media backup
+skip this step if you either dont need a backup or have a backup
+
+stop services that your going to backup
+```
+sudo systemctl stop jellyfin radarr sonarr prowlarr qbittorrent seerr
+```
+compress /var/lib/ of each application into a .tar.gz file
+```
+sudo tar -czvf ~/media-backup.tar.gz   /var/lib/jellyfin   /var/lib/radarr   /var/lib/sonarr   /var/lib/prowlarr   /var/lib/qBittorrent   /var/lib/seerr
+```
+transfer over the backup file to SSH machine
+```
+scp server:/home/hcg_leo/media-backup.tar.gz "C:\Users\Aran\Desktop\backup\nixos-server-files\media"
+```
+then remove the backup file
+```
+sudo rm media-backup.tar.gz
+```
+start services again
+```
+sudo systemctl start jellyfin radarr sonarr prowlarr qbittorrent seerr
+```
+## import media backup
+transfer over the backup file to your nixos server
+```
+scp "C:\Users\Aran\Desktop\backup\nixos-server-files\media\media-backup.tar.gz" server:/home/hcg_leo/media-backup.tar.gz
+```
+stop services you will import backups into
+```
+sudo systemctl stop jellyfin radarr sonarr prowlarr qbittorrent seerr
+```
+import backup into each folder (file structure is kept the same in .tar.gz- cool)
+```
+sudo tar -xzvf ~/media-backup.tar.gz -C /
+```
+start services again
+```
+sudo systemctl start jellyfin radarr sonarr prowlarr qbittorrent seerr
+```

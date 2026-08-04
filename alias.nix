@@ -23,7 +23,7 @@
     minecraft-stop = "sudo podman stop -t 60 minecraft-server";
 
     # media config
-    media-config = "sudo nvim ~/nixos-server/jellyfin.nix";
+    media-config = "sudo nvim ~/nixos-server/media.nix";
     
     # other
     reboot = "sudo reboot";
