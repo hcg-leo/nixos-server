@@ -3,12 +3,13 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
+      /home/hcg_leo/nixos-server/hardware-configuration.nix
+      /home/hcg_leo/nixos-server/networking.nix
       ./minecraft.nix
-      ./networking.nix
       ./alias.nix
       ./minecraft-backup.nix
       ./media.nix
+      ./torrent-vpn.nix
     ];
 
   environment.systemPackages = with pkgs; [
@@ -52,6 +53,8 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # services 
   services.openssh.enable = true;
