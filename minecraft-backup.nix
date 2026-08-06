@@ -16,7 +16,7 @@
       ExecStartPre = "${pkgs.systemd}/bin/systemctl stop podman-minecraft-server.service";
       
       ExecStart = ''
-        ${pkgs.rclone}/bin/rclone sync /var/lib/minecraft gdrive:backup/nixos-server-files/minecraft-server-backup/one \
+        ${pkgs.rclone}/bin/rclone sync /var/lib/minecraft gdrive:backup/nixos-server-files/minecraft-server-backup \
           --config /root/secrets/rclone.conf \
           --verbose
       '';

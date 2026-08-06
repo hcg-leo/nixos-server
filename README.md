@@ -33,7 +33,7 @@ nano nixos-server/networking.nix
 ```
 copy ``/etc/nixos/hardware-configuration.nix`` to ``/nixos-server/hardware-optimization``
 ```
-cp /etc/nixos/hardware-configuration.nix ~/nixos-server/hardware-optimization
+cp /etc/nixos/hardware-configuration.nix ~/nixos-server
 ```
 symlink this repository to ``/etc`` <br/>
 ```
@@ -130,19 +130,3 @@ start services again
 ```
 sudo systemctl start jellyfin radarr sonarr prowlarr qbittorrent seerr
 ```
-## vpn for torrenting - im using mullvad
-create a wireguard config file from your vpn of choice
-
-transfer over rclone.conf from SSH machine to new directory
-```
-scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\media-vpn\*" server:/home/hcg_leo
-```
-then move it to /root/secrets
-```
-sudo mv mullvad.conf /root/secrets/
-```
-make sure only a root user can read this file
-```
-sudo chmod 600 /root/secrets/mullvad.conf
-```
-use ``https://ipleak.net/`` to test if your vpn works via torrent address detection, and bind your vpn to qBittorrent
