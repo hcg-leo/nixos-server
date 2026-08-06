@@ -4,6 +4,7 @@
   environment.shellAliases = {
     # nixos
     rebuild = "sudo nixos-rebuild switch";
+    rebuild-flake = "sudo nixos-rebuild switch --flake /home/hcg_leo/nixos-server --impure";
     
 
     # config
@@ -24,6 +25,10 @@
 
     # media config
     media-config = "sudo nvim ~/nixos-server/media.nix";
+
+    # ip/vpn
+    mullvad = "sudo ip netns exec mullvad curl -s https://am.i.mullvad.net/connected";
+    public-ip = "curl -4 ifconfig.me";
     
     # other
     reboot = "sudo reboot";

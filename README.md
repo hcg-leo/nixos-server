@@ -33,7 +33,7 @@ nano nixos-server/networking.nix
 ```
 copy ``/etc/nixos/hardware-configuration.nix`` to ``/nixos-server/hardware-optimization``
 ```
-cp /etc/nixos/hardware-configuration.nix ~/nixos-server
+cp /etc/nixos/hardware-configuration.nix ~/nixos-server/hardware-optimization
 ```
 symlink this repository to ``/etc`` <br/>
 ```
@@ -145,5 +145,4 @@ make sure only a root user can read this file
 ```
 sudo chmod 600 /root/secrets/mullvad.conf
 ```
-
-
+use ``https://ipleak.net/`` to test if your vpn works via torrent address detection, and bind your vpn to qBittorrent
