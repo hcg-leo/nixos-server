@@ -89,6 +89,20 @@ make sure only a root user can read this file
 sudo chmod 600 /root/secrets/rclone.conf
 ```
 
+# vpn config
+## vpn for torrenting - im using mullvad
+create a wireguard config file from mullvad
+
+go to ``nixos-server/vpn-torrent.nix`` and setup mullvad adress
+copy torrent-vpn.nix.template to torrent-vpn.nix
+```
+cp ~/nixos-server/vpn-torrent.nix.template ~/nixos-server/vpn-torrent.nix
+```
+```
+nvim ~/nixos-server/vpn-torrent.nix
+```
+use ``https://ipleak.net/`` to test if your vpn works via torrent address detection, and bind your vpn to qBittorrent
+
 # media config
 ## create media backup
 skip this step if you either dont need a backup or have a backup
@@ -130,16 +144,3 @@ start services again
 ```
 sudo systemctl start jellyfin radarr sonarr prowlarr qbittorrent seerr
 ```
-# vpn config
-## vpn for torrenting - im using mullvad
-create a wireguard config file from mullvad
-
-go to ``nixos-server/torrent-vpn.nix`` and setup mullvad adress
-copy torrent-vpn.nix.template to torrent-vpn.nix
-```
-cp ~/nixos-server/torrent-vpn.nix.template ~/nixos-server/torrent-vpn.nix
-```
-```
-nano ~/nixos-server/torrent-vpn.nix
-```
-use ``https://ipleak.net/`` to test if your vpn works via torrent address detection, and bind your vpn to qBittorrent
