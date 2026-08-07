@@ -9,6 +9,7 @@
       ./alias.nix
       ./minecraft-backup.nix
       ./media.nix
+      ./vpn-torrent.nix
     ];
 
   environment.systemPackages = with pkgs; [
