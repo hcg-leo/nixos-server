@@ -1,7 +1,8 @@
-result
+gesult
 result-*
 *.swp
 *~
 .DS_Store
 networking.nix
 hardware-configuration.nix
+vpn-torrent.nix
