@@ -93,6 +93,19 @@ sudo chmod 600 /root/secrets/rclone.conf
 ## vpn for torrenting - im using mullvad
 create a wireguard config file from mullvad
 
+transfer over rclone.conf from SSH machine to new directory
+```
+scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\media-vpn\*" server:/home/hcg_leo
+```
+then move it to /root/secrets
+```
+sudo mv mullvad.conf /root/secrets/
+```
+make sure only a root user can read this file
+```
+sudo chmod 600 /root/secrets/mullvad.conf
+```
+
 go to ``nixos-server/vpn-torrent.nix`` and setup mullvad adress
 copy torrent-vpn.nix.template to torrent-vpn.nix
 ```
