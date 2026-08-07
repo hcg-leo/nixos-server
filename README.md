@@ -99,7 +99,7 @@ scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\media-vpn\*" server:/hom
 ```
 then move it to /root/secrets
 ```
-sudo mv mullvad.conf /root/secrets/
+sudo mv ~/mullvad.conf /root/secrets/
 ```
 make sure only a root user can read this file
 ```
