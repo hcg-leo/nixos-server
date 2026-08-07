@@ -15,6 +15,7 @@
     "d /mnt/storage/movies 0775 root media -"
     "d /mnt/storage/music 0775 root media -"
     "d /mnt/storage/shows 0775 root media -"
+    "d /mnt/storage/downloads 0775 root media -"
   ];
 
   # jellyfin
