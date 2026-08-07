@@ -164,3 +164,12 @@ start services again
 ```
 sudo systemctl start jellyfin radarr sonarr prowlarr qbittorrent seerr
 ```
+## managing shows
+if you downloaded a show/movie manually from qbittorrent, it will be in the downloads folder. 
+
+move from downloads folder to its designated folder (replace '*' with show/movie and '**' with the name)
+```
+sudo mkdir -p "/mnt/storage/*/**"
+```
+```
+sudo cp -r "/mnt/storage/downloads/*/." "/mnt/storage/*/**/"
