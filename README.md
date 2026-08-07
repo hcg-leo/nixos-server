@@ -101,7 +101,12 @@ cp ~/nixos-server/vpn-torrent.nix.template ~/nixos-server/vpn-torrent.nix
 ```
 nvim ~/nixos-server/vpn-torrent.nix
 ```
-use ``https://ipleak.net/`` to test if your vpn works via torrent address detection, and bind your vpn to qBittorrent
+```
+sudo nixos-rebuild switch
+```
+some ways to test if your vpn is working correctly is :
+  
+  ``https://ipleak.net/`` to test if your vpn works via torrent address detection, and bind your vpn to qBittorrent
 
 # media config
 ## create media backup
