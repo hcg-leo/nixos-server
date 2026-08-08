@@ -23,22 +23,23 @@ cd ~
 ```
 git clone https://github.com/hcg-leo/nixos-server
 ```
-go to ``nixos-server/networking.nix`` and setup wifi (in the cloned repository) <br/>
 copy networking.nix.template to networking.nix
 ```
 cp ~/nixos-server/networking.nix.template ~/nixos-server/networking.nix
 ```
+go to ``nixos-server/networking.nix`` and setup wifi
 ```
 nano ~/nixos-server/networking.nix
 ```
-go to ``nixos-server/vpn-torrent.nix`` and setup mullvad adress
+copy vpn-torrent.nix.template to vpn-torrent.nix
 ```
 cp ~/nixos-server/vpn-torrent.nix.template ~/nixos-server/vpn-torrent.nix
 ```
+go to ``nixos-server/vpn-torrent.nix`` and setup adress
 ```
 nano ~/nixos-server/vpn-torrent.nix
 ```
-copy ``/etc/nixos/hardware-configuration.nix`` to ``/nixos-server/hardware-optimization``
+copy ``/etc/nixos/hardware-configuration.nix`` to ``/nixos-server/``
 ```
 cp /etc/nixos/hardware-configuration.nix ~/nixos-server
 ```
