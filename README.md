@@ -92,7 +92,7 @@ scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\rclone\*" server:/home/h
 ```
 then move it to /root/secrets
 ```
-sudo mv rclone.conf /root/secrets/
+sudo mv ~/rclone.conf /root/secrets/
 ```
 make sure only a root user can read this file
 ```
@@ -115,7 +115,7 @@ make sure only a root user can read this file
 ```
 sudo chmod 600 /root/secrets/mullvad.conf
 ```
-
+!! remember to bind your vpn in qbittorrent!!
 some ways to test if your vpn is working correctly is :
   
   ``https://ipleak.net/`` to test if your vpn works via torrent address detection, and bind your vpn to qBittorrent
