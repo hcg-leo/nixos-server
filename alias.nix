@@ -26,7 +26,7 @@
     media-config = "sudo nvim ~/nixos-server/media.nix";
 
     # vpn torrent
-    vpn-torrent-test = "sudo ip netns exec qbtns curl -s ifconfig.me";
+    mullvad = "sudo ip netns exec qbtns curl -s ifconfig.me";
     
     # other
     reboot = "sudo reboot";
