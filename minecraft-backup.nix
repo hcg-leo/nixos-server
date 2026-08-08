@@ -29,7 +29,7 @@
     description = "timer for minecraft server backup";
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "*-*-* 21:00:00";
+      OnCalendar = "*-*-* 03:00:00";
       Persistent = true;
     };
   };
