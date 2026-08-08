@@ -12,10 +12,10 @@
   
 
   systemd.tmpfiles.rules = [
-    "d /mnt/storage/movies 0775 root media -"
-    "d /mnt/storage/music 0775 root media -"
-    "d /mnt/storage/shows 0775 root media -"
-    "d /mnt/storage/downloads 0775 root media -"
+    "d /mnt/storage/movies 2775 root media -"
+    "d /mnt/storage/music 2775 root media -"
+    "d /mnt/storage/shows 2775 root media -"
+    "d /mnt/storage/downloads 2775 root media -"
   ];
 
   # jellyfin
