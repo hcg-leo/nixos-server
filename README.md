@@ -26,10 +26,17 @@ git clone https://github.com/hcg-leo/nixos-server
 go to ``nixos-server/networking.nix`` and setup wifi (in the cloned repository) <br/>
 copy networking.nix.template to networking.nix
 ```
-cp nixos-server/networking.nix.template nixos-server/networking.nix
+cp ~/nixos-server/networking.nix.template ~/nixos-server/networking.nix
 ```
 ```
-nano nixos-server/networking.nix
+nano ~/nixos-server/networking.nix
+```
+go to ``nixos-server/vpn-torrent.nix`` and setup mullvad adress
+```
+cp ~/nixos-server/vpn-torrent.nix.template ~/nixos-server/vpn-torrent.nix
+```
+```
+nano ~/nixos-server/vpn-torrent.nix
 ```
 copy ``/etc/nixos/hardware-configuration.nix`` to ``/nixos-server/hardware-optimization``
 ```
@@ -106,17 +113,6 @@ make sure only a root user can read this file
 sudo chmod 600 /root/secrets/mullvad.conf
 ```
 
-go to ``nixos-server/vpn-torrent.nix`` and setup mullvad adress
-copy torrent-vpn.nix.template to torrent-vpn.nix
-```
-cp ~/nixos-server/vpn-torrent.nix.template ~/nixos-server/vpn-torrent.nix
-```
-```
-nvim ~/nixos-server/vpn-torrent.nix
-```
-```
-sudo nixos-rebuild switch
-```
 some ways to test if your vpn is working correctly is :
   
   ``https://ipleak.net/`` to test if your vpn works via torrent address detection, and bind your vpn to qBittorrent
