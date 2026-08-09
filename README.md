@@ -23,6 +23,7 @@ cd ~
 ```
 git clone https://github.com/hcg-leo/nixos-server
 ```
+### setting up .nix files with sensitve stuff
 copy networking.nix.template to networking.nix
 ```
 cp ~/nixos-server/networking.nix.template ~/nixos-server/networking.nix
@@ -53,6 +54,7 @@ copy ``/etc/nixos/hardware-configuration.nix`` to ``/nixos-server/``
 ```
 cp /etc/nixos/hardware-configuration.nix ~/nixos-server
 ```
+### symlink - you manage all your .nix files through here
 symlink this repository to ``/etc`` <br/>
 ```
 cd /etc
