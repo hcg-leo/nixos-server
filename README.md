@@ -39,6 +39,16 @@ go to ``nixos-server/vpn-torrent.nix`` and setup adress
 ```
 nano ~/nixos-server/vpn-torrent.nix
 ```
+
+copy vpn-prowlarr.nix.template to vpn-prowlarr.nix
+```
+cp ~/nixos-server/vpn-prowlarr.nix.template ~/nixos-server/vpn-prowlarr.nix
+```
+go to ``nixos-server/vpn-prowlarr.nix`` and setup adress
+```
+nano ~/nixos-server/vpn-prowlarr.nix
+```
+
 copy ``/etc/nixos/hardware-configuration.nix`` to ``/nixos-server/``
 ```
 cp /etc/nixos/hardware-configuration.nix ~/nixos-server
@@ -102,7 +112,7 @@ sudo chmod 600 /root/secrets/rclone.conf
 
 # vpn config
 ## vpn for torrenting - im using mullvad
-create a wireguard config file from mullvad
+create a wireguard config file from vpn
 
 transfer over rclone.conf from SSH machine to new directory
 ```
@@ -112,14 +122,21 @@ then move it to /root/secrets
 ```
 sudo mv ~/mullvad.conf /root/secrets/
 ```
+```
+sudo mv ~/mullvad2.conf /root/secrets/
+```
 make sure only a root user can read this file
 ```
 sudo chmod 600 /root/secrets/mullvad.conf
 ```
+```
+sudo chmod 600 /root/secrets/mullvad2.conf
+```
 !! remember to bind your vpn in qbittorrent!!
+
 some ways to test if your vpn is working correctly is :
   
-  ``https://ipleak.net/`` to test if your vpn works via torrent address detection, and bind your vpn to qBittorrent
+  ``https://ipleak.net/`` to test if your vpn works via torrent address detection
   
   run ``vpn-torrent-test`` and make sure the output is the ip of your vpn
   
