@@ -32,6 +32,9 @@ in
         wg="${pkgs.wireguard-tools}/bin/wg"
         wgq="${pkgs.wireguard-tools}/bin/wg-quick"
 
+	$ip -n ${ns} link del ${wgIf} 2>/dev/null || true
+        $ip link del ${vethHost} 2>/dev/null || true
+
         $ip link add ${wgIf} type wireguard
         $ip link set ${wgIf} netns ${ns}
         $ip -n ${ns} address add ${mullvadAddress} dev ${wgIf}

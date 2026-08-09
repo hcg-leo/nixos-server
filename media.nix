@@ -63,4 +63,10 @@
     enable = true;
     openFirewall = true;
   };
+
+  # flaresolverr - for some indexers to work
+  services.flaresolverr = {
+    enable = true;
+    openFirewall = true;
+  };
 }
