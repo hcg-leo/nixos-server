@@ -10,7 +10,7 @@
 ### pre-install
 go to ``nmtui`` and setup wifi
 
-run ``sudo nano /etc/nixos/configuration.nix`` and add both git and enable openSSH 
+run ``sudo nano /etc/nixos/configuration.nix`` and add both git, change hostname to 'server' and enable openSSH 
 
 then ``sudo nixos-rebuild switch``
 
