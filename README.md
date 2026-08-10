@@ -140,7 +140,7 @@ some ways to test if your vpn is working correctly is :
   
   ``https://ipleak.net/`` to test if your vpn works via torrent address detection
   
-  run ``vpn-torrent-test`` and make sure the output is the ip of your vpn
+  run ``mullvad`` and make sure the output is the ip of your vpn
   
   run ``sudo systemctl stop qbtns-wg`` and run ``sudo ip netns exec qbtns curl -s ifconfig.me``, nothing should output since qbittorrent wireguard is not active.
 
