@@ -14,7 +14,6 @@
     # minecraft
     minecraft-config = "sudo nvim ~/nixos-server/minecraft.nix";
     minecraft-backup-config = "sudo nvim ~/nixos-server/minecraft-backup.nix";
-    
     minecraft-console = "sudo podman exec -it minecraft-server rcon-cli";
     minecraft-console_logs = "sudo journalctl -fu podman-minecraft-server.service";
     minecraft-backup = "sudo systemctl start --no-block minecraft-backup.service";
@@ -25,8 +24,12 @@
     media-config = "sudo nvim ~/nixos-server/media.nix";
 
     # vpn torrent
-    mullvad = "sudo ip netns exec qbtns curl -s ifconfig.me";
+    mullvad-torrent = "sudo ip netns exec qbtns curl -s ifconfig.me";
     vpn-torrent = "sudo nvim ~/nixos-server/vpn-torrent.nix";
+
+    # vpn prowlarr
+    mullvad-prowlarr = "sudo ip netns exec prwns curl -s ifconfig.me";
+    vpn-prowlarr = "sudo nvim ~/nixos-server/vpn-prowlarr.nix";
     
     # other
     reboot = "sudo reboot";
