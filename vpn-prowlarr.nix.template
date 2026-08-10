@@ -35,8 +35,9 @@ in
         wg="${pkgs.wireguard-tools}/bin/wg"
         wgq="${pkgs.wireguard-tools}/bin/wg-quick"
 
-        $ip link add ${wgIf} type wireguard
-        $ip link set ${wgIf} netns ${ns}
+	$ip link add ${ns}-wg0 type wireguard
+        $ip link set ${ns}-wg0 netns ${ns}
+        $ip -n ${ns} link set ${ns}-wg0 name ${wgIf}
         $ip -n ${ns} address add ${mullvadAddress} dev ${wgIf}
         $ip netns exec ${ns} $wg setconf ${wgIf} <($wgq strip /root/secrets/mullvad2.conf)
         $ip -n ${ns} link set ${wgIf} up
