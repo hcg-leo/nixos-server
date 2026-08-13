@@ -59,10 +59,6 @@ rebuild your system
 ```
 sudo nixos-rebuild switch
 ```
-and reboot
-```
-sudo reboot
-```
 
 # minecraft server config
 ## plugins
