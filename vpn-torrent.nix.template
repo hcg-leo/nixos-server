@@ -13,12 +13,20 @@ let
   mullvadDns     = "10.64.0.1";    # the "DNS" line from your mullvad.conf
 in
 {
-  # the "netns@" template unit lives in vpn-netns.nix now, shared with
-  # vpn-prowlarr.nix, make sure ./vpn-netns.nix is in configuration.nix imports
-
   environment.etc."netns/${ns}/resolv.conf".text = ''
     nameserver ${mullvadDns}
   '';
+
+  systemd.services."netns@" = {
+    description = "%I network namespace";
+    before = [ "network.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = "${pkgs.iproute2}/bin/ip netns add %I";
+      ExecStop  = "${pkgs.iproute2}/bin/ip netns del %I";
+    };
+  };
 
   systemd.services."${ns}-wg" = {
     description = "wireguard + veth for ${ns} netns";
@@ -35,9 +43,8 @@ in
         wg="${pkgs.wireguard-tools}/bin/wg"
         wgq="${pkgs.wireguard-tools}/bin/wg-quick"
 
-	$ip link add ${ns}-wg0 type wireguard
-        $ip link set ${ns}-wg0 netns ${ns}
-        $ip -n ${ns} link set ${ns}-wg0 name ${wgIf}
+        $ip link add ${wgIf} type wireguard
+        $ip link set ${wgIf} netns ${ns}
         $ip -n ${ns} address add ${mullvadAddress} dev ${wgIf}
         $ip netns exec ${ns} $wg setconf ${wgIf} <($wgq strip /root/secrets/mullvad.conf)
         $ip -n ${ns} link set ${wgIf} up

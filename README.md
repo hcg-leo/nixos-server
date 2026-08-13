@@ -23,7 +23,6 @@ cd ~
 ```
 git clone https://github.com/hcg-leo/nixos-server
 ```
-### setting up .nix files with sensitve stuff
 copy networking.nix.template to networking.nix
 ```
 cp ~/nixos-server/networking.nix.template ~/nixos-server/networking.nix
@@ -39,15 +38,6 @@ cp ~/nixos-server/vpn-torrent.nix.template ~/nixos-server/vpn-torrent.nix
 go to ``nixos-server/vpn-torrent.nix`` and setup adress
 ```
 nano ~/nixos-server/vpn-torrent.nix
-```
-
-copy vpn-prowlarr.nix.template to vpn-prowlarr.nix
-```
-cp ~/nixos-server/vpn-prowlarr.nix.template ~/nixos-server/vpn-prowlarr.nix
-```
-go to ``nixos-server/vpn-prowlarr.nix`` and setup adress
-```
-nano ~/nixos-server/vpn-prowlarr.nix
 ```
 
 copy ``/etc/nixos/hardware-configuration.nix`` to ``/nixos-server/``
@@ -124,15 +114,9 @@ then move it to /root/secrets
 ```
 sudo mv ~/mullvad.conf /root/secrets/
 ```
-```
-sudo mv ~/mullvad2.conf /root/secrets/
-```
 make sure only a root user can read this file
 ```
 sudo chmod 600 /root/secrets/mullvad.conf
-```
-```
-sudo chmod 600 /root/secrets/mullvad2.conf
 ```
 !! remember to bind your vpn in qbittorrent!!
 
@@ -140,21 +124,21 @@ some ways to test if your vpn is working correctly is :
   
   ``https://ipleak.net/`` to test if your vpn works via torrent address detection
   
-  run ``mullvad-torrent``, ``mullvad-prowlarr`` and make sure the output is the ip of your vpn
+  run ``mullvad-torrent`` and make sure the output is the ip of your vpn
 
   run ``sudo systemctl stop qbtns-wg`` and run ``sudo ip netns exec qbtns curl -s ifconfig.me``, nothing should output since qbittorrent wireguard is not active.
 
-# media config
+# media config - abyss css + intro skipper
 ## create media backup
 skip this step if you either dont need a backup or have a backup
 
 stop services that your going to backup
 ```
-sudo systemctl stop jellyfin radarr sonarr prowlarr qbittorrent seerr
+sudo systemctl stop jellyfin qbittorrent
 ```
 compress /var/lib/ of each application into a .tar.gz file
 ```
-sudo tar -czvf ~/media-backup.tar.gz   /var/lib/jellyfin   /var/lib/radarr   /var/lib/sonarr   /var/lib/prowlarr   /var/lib/qBittorrent   /var/lib/seerr
+sudo tar -czvf ~/media-backup.tar.gz   /var/lib/jellyfin   /var/lib/qBittorrent
 ```
 transfer over the backup file to SSH machine
 ```
@@ -166,7 +150,7 @@ sudo rm media-backup.tar.gz
 ```
 start services again
 ```
-sudo systemctl start jellyfin radarr sonarr prowlarr qbittorrent seerr
+sudo systemctl start jellyfin qbittorrent 
 ```
 ## import media backup
 transfer over the backup file to your nixos server
@@ -175,7 +159,7 @@ scp "C:\Users\Aran\Desktop\backup\nixos-server-files\media\media-backup.tar.gz" 
 ```
 stop services you will import backups into
 ```
-sudo systemctl stop jellyfin radarr sonarr prowlarr qbittorrent seerr
+sudo systemctl stop jellyfin qbittorrent 
 ```
 import backup into each folder (file structure is kept the same in .tar.gz- cool)
 ```
@@ -183,10 +167,9 @@ sudo tar -xzvf ~/media-backup.tar.gz -C /
 ```
 start services again
 ```
-sudo systemctl start jellyfin radarr sonarr prowlarr qbittorrent seerr
+sudo systemctl start jellyfin qbittorrent 
 ```
 ## managing shows
-if you downloaded a show/movie manually from qbittorrent, it will be in the downloads folder. 
 
 move from downloads folder to its designated folder (replace '*' with show/movie and '**' with the name)
 ```

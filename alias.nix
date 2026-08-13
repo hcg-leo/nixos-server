@@ -24,13 +24,9 @@
     media-config = "sudo nvim ~/nixos-server/media.nix";
 
     # vpn torrent
-    mullvad-torrent = "sudo ip netns exec qbtns curl -s ifconfig.me";
+    mullvad = "sudo ip netns exec qbtns curl -s ifconfig.me";
     vpn-torrent = "sudo nvim ~/nixos-server/vpn-torrent.nix";
 
-    # vpn prowlarr
-    mullvad-prowlarr = "sudo ip netns exec prwns curl -s ifconfig.me";
-    vpn-prowlarr = "sudo nvim ~/nixos-server/vpn-prowlarr.nix";
-    
     # other
     reboot = "sudo reboot";
   };
