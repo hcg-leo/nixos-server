@@ -1,6 +1,6 @@
 <div align="center">
   <h1> nixos server configuration </h1>
-  <p><i>embrace declarative.</i></p>
+  <p><i>minimal install running on a hp laptop 15s-fq2xxx</i></p>
   
   ![NixOS](https://img.shields.io/badge/NixOS-26.05-5277C3.svg?style=for-the-badge&logo=NixOS&logoColor=white)
   ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
