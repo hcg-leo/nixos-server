@@ -173,3 +173,4 @@ sudo mkdir -p "/mnt/storage/*/**"
 ```
 ```
 sudo cp -r "/mnt/storage/downloads/*/." "/mnt/storage/*/**/"
+```
