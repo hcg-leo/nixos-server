@@ -124,7 +124,7 @@ some ways to test if your vpn is working correctly is :
 
   run ``sudo systemctl stop qbtns-wg`` and run ``sudo ip netns exec qbtns curl -s ifconfig.me``, nothing should output since qbittorrent wireguard is not active.
 
-# media config - abyss css + intro skipper
+# media config - abyss css + intro skipper + media bar + file transformation
 ## create media backup
 skip this step if you either dont need a backup or have a backup
 
