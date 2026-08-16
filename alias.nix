@@ -29,5 +29,6 @@
 
     # other
     reboot = "sudo reboot";
+    pub-ip = "curl -4 ifconfig.me";
   };
 }
