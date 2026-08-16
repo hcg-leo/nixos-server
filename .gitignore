@@ -6,4 +6,3 @@ result-*
 networking.nix
 hardware-configuration.nix
 vpn-torrent.nix
-vpn-prowlarr.nix
