@@ -10,6 +10,7 @@
       ./minecraft-backup.nix
       ./media.nix
       ./vpn-torrent.nix
+      ./btop.nix
     ];
 
   environment.systemPackages = with pkgs; [
