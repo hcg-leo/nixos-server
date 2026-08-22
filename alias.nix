@@ -29,6 +29,7 @@
 
     # other
     reboot = "sudo reboot";
+    timers = "sudo systemctl list-timers --all";
     pub-ip = "curl -4 ifconfig.me";
   };
 }
