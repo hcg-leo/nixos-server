@@ -60,6 +60,13 @@ cp nixos-server/networking.nix.template nixos-server/networking.nix
 ```
 nano nixos-server/networking.nix
 ```
+copy vpn-torrent.nix.template to vpn-torrent.nix
+```
+cp ~/nixos-server/vpn-torrent.nix.template ~/nixos-server/vpn-torrent.nix
+```
+```
+nano ~/nixos-server/vpn-torrent.nix
+```
 
 copy `/etc/nixos/hardware-configuration.nix` into the cloned repo
 
