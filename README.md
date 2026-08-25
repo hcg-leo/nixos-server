@@ -19,8 +19,6 @@ custom nixos server running on a hp laptop 15s-fq2xxx - just a minecraft and med
 └── networking.nix.template
 ```
 
-> note: `configuration.nix` also imports `vpn-torrent.nix` and `btop.nix`, neither of which ship in this repo. `vpn-torrent.nix` is gitignored on purpose since it holds vpn secrets - you write it by hand in the vpn section below. `btop.nix` isnt in the repo or the gitignore, so a fresh clone will fail to rebuild until you add it back or drop it from the imports list
-
 ### the files and what they configure
 
 - `configuration.nix`: main entry point, imports every file below plus `hardware-configuration.nix` and `networking.nix`
