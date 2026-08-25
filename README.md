@@ -16,7 +16,8 @@ custom nixos server running on a hp laptop 15s-fq2xxx - just a minecraft and med
 ├── media.nix
 ├── minecraft-backup.nix
 ├── minecraft.nix
-└── networking.nix.template
+├── networking.nix.template
+└── vpn-torrent.nix.template
 ```
 
 ### the files and what they configure
@@ -27,6 +28,7 @@ custom nixos server running on a hp laptop 15s-fq2xxx - just a minecraft and med
 - `minecraft-backup.nix`: nightly timer that stops the server, syncs `/var/lib/minecraft` to google drive with rclone, then starts it back up
 - `media.nix`: jellyfin and qbittorrent, plus the shared `media` group and storage folders under `/mnt/storage`
 - `networking.nix.template`: copy this to `networking.nix` and fill in your own wifi details
+- `vpn-torrent.nix.template`: copy this to `vpn-torrent.nix` and fill in your own vpn details - same as the wifi
 
 ### pre-install
 
