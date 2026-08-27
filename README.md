@@ -105,7 +105,7 @@ run `scp -r "C:\path\to\your\local\plugins\*" username@your_linux_ip:~/` from th
 transfer plugins over from `windows` to `linux`
 
 ```
-scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\plugins\*" server:/var/lib/minecraft/plugins
+scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\plugins\*" hcg_leo@server:/var/lib/minecraft/plugins
 ```
 
 ## google drive backup only for minecraft server
@@ -130,7 +130,7 @@ sudo chmod 700 /root/secrets
 transfer over rclone.conf from the ssh machine to the new directory
 
 ```
-scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\rclone\*" server:/home/hcg_leo
+scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\rclone\*" hcg_leo@server:/home/hcg_leo
 ```
 
 then move it to /root/secrets
@@ -176,7 +176,7 @@ sudo tar -czvf ~/media-backup.tar.gz   /var/lib/jellyfin   /var/lib/radarr   /va
 transfer over the backup file to ssh machine
 
 ```
-scp server:/home/hcg_leo/media-backup.tar.gz "C:\Users\Aran\Desktop\backup\nixos-server-files\media"
+scp hcg_leo@server:/home/hcg_leo/media-backup.tar.gz "C:\Users\Aran\Desktop\backup\nixos-server-files\media"
 ```
 
 then remove the backup file
@@ -196,7 +196,7 @@ sudo systemctl start jellyfin radarr sonarr prowlarr qbittorrent seerr
 transfer over the backup file to your nixos server
 
 ```
-scp "C:\Users\Aran\Desktop\backup\nixos-server-files\media\media-backup.tar.gz" server:/home/hcg_leo/media-backup.tar.gz
+scp "C:\Users\Aran\Desktop\backup\nixos-server-files\media\media-backup.tar.gz" hcg_leo@server:/home/hcg_leo/media-backup.tar.gz
 ```
 
 stop services you will import backups into
@@ -224,7 +224,7 @@ create a wireguard config file from your vpn of choice
 transfer over mullvad.conf from the ssh machine to a new directory
 
 ```
-scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\media-vpn\*" server:/home/hcg_leo
+scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\media-vpn\*" hcg_leo@server:/home/hcg_leo
 ```
 
 then move it to /root/secrets
