@@ -147,6 +147,16 @@ sudo chmod 600 /root/secrets/rclone.conf
 
 # media config
 
+## music
+
+scp your music into jellyfin with ``scp``
+```
+scp -r "C:\Users\Aran Thananjayan\Desktop\backup\music\*" hcg_leo@server:/mnt/storage/music
+```
+for your music to appear, run this command (replace <*> with playlist name)
+```
+chmod -R g+rX /mnt/storage/music/<*>
+```
 ## create media backup
 
 skip this step if you either dont need a backup or have a backup
