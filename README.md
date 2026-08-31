@@ -22,221 +22,112 @@ custom nixos server running on a hp laptop 15s-fq2xxx - just a minecraft and med
 
 ### the files and what they configure
 
-- `configuration.nix`: main entry point, imports every file below plus `hardware-configuration.nix` and `networking.nix`
-- `alias.nix`: shell aliases for rebuilding, editing configs and managing the minecraft server
-- `minecraft.nix`: a paper minecraft server in a podman container, 6gb of memory, ports 25565/tcp and 24454/udp
-- `minecraft-backup.nix`: nightly timer that stops the server, syncs `/var/lib/minecraft` to google drive with rclone, then starts it back up
-- `media.nix`: jellyfin and qbittorrent, plus the shared `media` group and storage folders under `/mnt/storage`
-- `networking.nix.template`: copy this to `networking.nix` and fill in your own wifi details
-- `vpn-torrent.nix.template`: copy this to `vpn-torrent.nix` and fill in your own vpn details - same as the wifi
+- `configuration.nix` — entry point, imports everything below plus `hardware-configuration.nix` and `networking.nix`
+- `alias.nix` — shell aliases for rebuilding, editing configs and managing the minecraft server
+- `minecraft.nix` — a paper server in a podman container, 6gb ram, ports 25565/tcp + 24454/udp
+- `minecraft-backup.nix` — nightly timer: stop the server, rclone sync `/var/lib/minecraft` to google drive, start it back up
+- `media.nix` — jellyfin + qbittorrent, plus the shared `media` group and storage under `/mnt/storage`
+- `networking.nix.template` — copy to `networking.nix`, fill in your wifi
+- `vpn-torrent.nix.template` — copy to `vpn-torrent.nix`, fill in your vpn, same idea
 
 ### pre-install
 
-go to `nmtui` and setup wifi
-
-run `sudo nano /etc/nixos/configuration.nix` and add both git and enable openssh
-
-then `sudo nixos-rebuild switch`
+setup wifi via `nmtui`, then add git and enable openssh in `sudo nano /etc/nixos/configuration.nix`, then `sudo nixos-rebuild switch`
 
 ### install
 
-clone this repository  
-
 ```
 cd ~
-```
-
-```
 git clone https://github.com/hcg-leo/nixos-server
 ```
 
-go to `nixos-server/networking.nix` and setup wifi (in the cloned repository)  
-copy networking.nix.template to networking.nix
-
 ```
 cp nixos-server/networking.nix.template nixos-server/networking.nix
-```
-
-```
 nano nixos-server/networking.nix
 ```
-copy vpn-torrent.nix.template to vpn-torrent.nix
+
 ```
 cp ~/nixos-server/vpn-torrent.nix.template ~/nixos-server/vpn-torrent.nix
-```
-```
 nano ~/nixos-server/vpn-torrent.nix
 ```
-
-copy `/etc/nixos/hardware-configuration.nix` into the cloned repo
 
 ```
 cp /etc/nixos/hardware-configuration.nix ~/nixos-server
 ```
 
-`configuration.nix` also expects `vpn-torrent.nix` and `btop.nix` to exist in this folder - `vpn-torrent.nix` gets created in the vpn section further down, `btop.nix` needs adding by hand or removing from the imports before you rebuild
-
-symlink this repository to `/etc`  
+> `configuration.nix` also expects `btop.nix` to exist — add your own or drop it from the imports before rebuilding
 
 ```
 cd /etc
-```
-
-```
 sudo rm -rf nixos
-```
-
-```
 sudo ln -s ~/nixos-server /etc/nixos
-```
-
-rebuild your system
-
-```
 sudo nixos-rebuild switch
 ```
 
-# minecraft server config
+## minecraft server config
 
-## plugins
+### plugins
 
-run `scp -r "C:\path\to\your\local\plugins\*" username@your_linux_ip:~/` from the ssh machine to transfer plugins over. for any scp command, follow this syntax
-
-transfer plugins over from `windows` to `linux`
+same `scp -r "local\path\*" user@ip:path` syntax applies to every transfer below. windows → linux example:
 
 ```
 scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\plugins\*" hcg_leo@server:/var/lib/minecraft/plugins
 ```
 
-## google drive backup only for minecraft server
+### google drive backup
 
-from the ssh machine, download rclone, extract rclone.exe into a folder and open a terminal in that folder.
-run `.\rclone.exe config`
-
-choose the following
-
+download rclone on the ssh machine, run `.\rclone.exe config`, choose:
 `n, gdrive, drive, *empty*, *empty*, 1, *empty*, n, y, n, y`
-
-create a directory to store rclone.conf and apply rules
 
 ```
 sudo mkdir -p /root/secrets
-```
-
-```
 sudo chmod 700 /root/secrets
-```
-
-transfer over rclone.conf from the ssh machine to the new directory
-
-```
 scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\rclone\*" hcg_leo@server:/home/hcg_leo
-```
-
-then move it to /root/secrets
-
-```
 sudo mv rclone.conf /root/secrets/
-```
-
-make sure only a root user can read this file
-
-```
 sudo chmod 600 /root/secrets/rclone.conf
 ```
 
-# media config
+## media config
 
-## music
+### music
 
-scp your music into jellyfin with ``scp``
 ```
 scp -r "C:\Users\Aran Thananjayan\Desktop\backup\music\*" hcg_leo@server:/mnt/storage/music
-```
-for your music to appear, run this command (replace <*> with playlist name)
-```
 chmod -R g+rX /mnt/storage/music/<*>
 ```
-## create media backup
+(replace `<*>` with the playlist name so it shows up)
 
-skip this step if you either dont need a backup or have a backup
+### backup
 
-stop services that your going to backup
+skip if you don't need one or already have one:
 
 ```
 sudo systemctl stop jellyfin radarr sonarr prowlarr qbittorrent seerr
-```
-
-compress /var/lib/ of each application into a .tar.gz file
-
-```
-sudo tar -czvf ~/media-backup.tar.gz   /var/lib/jellyfin   /var/lib/radarr   /var/lib/sonarr   /var/lib/prowlarr   /var/lib/qBittorrent   /var/lib/seerr
-```
-
-transfer over the backup file to ssh machine
-
-```
+sudo tar -czvf ~/media-backup.tar.gz /var/lib/jellyfin /var/lib/radarr /var/lib/sonarr /var/lib/prowlarr /var/lib/qBittorrent /var/lib/seerr
 scp hcg_leo@server:/home/hcg_leo/media-backup.tar.gz "C:\Users\Aran\Desktop\backup\nixos-server-files\media"
-```
-
-then remove the backup file
-
-```
 sudo rm media-backup.tar.gz
-```
-
-start services again
-
-```
 sudo systemctl start jellyfin radarr sonarr prowlarr qbittorrent seerr
 ```
 
-## import media backup
-
-transfer over the backup file to your nixos server
+### restore
 
 ```
 scp "C:\Users\Aran\Desktop\backup\nixos-server-files\media\media-backup.tar.gz" hcg_leo@server:/home/hcg_leo/media-backup.tar.gz
-```
-
-stop services you will import backups into
-
-```
 sudo systemctl stop jellyfin radarr sonarr prowlarr qbittorrent seerr
-```
-
-import backup into each folder (file structure is kept the same in .tar.gz- cool)
-
-```
 sudo tar -xzvf ~/media-backup.tar.gz -C /
-```
-
-start services again
-
-```
 sudo systemctl start jellyfin radarr sonarr prowlarr qbittorrent seerr
 ```
 
-## vpn for torrenting - im using mullvad
+file structure is kept the same in the `.tar.gz` — cool.
 
-create a wireguard config file from your vpn of choice
+### vpn for torrenting - im using mullvad
 
-transfer over mullvad.conf from the ssh machine to a new directory
+create a wireguard config from your vpn of choice, then:
 
 ```
 scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\media-vpn\*" hcg_leo@server:/home/hcg_leo
-```
-
-then move it to /root/secrets
-
-```
 sudo mv mullvad.conf /root/secrets/
-```
-
-make sure only a root user can read this file
-
-```
 sudo chmod 600 /root/secrets/mullvad.conf
 ```
 
-use `https://ipleak.net/` to test if your vpn works via torrent address detection, and bind your vpn to qBittorrent
+test at `https://ipleak.net/`, bind your vpn to qBittorrent
