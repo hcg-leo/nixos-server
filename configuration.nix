@@ -11,6 +11,7 @@
       ./media.nix
       ./vpn-torrent.nix
       ./duckdns.nix
+      ./google-drive-backup.nix
     ];
 
   environment.systemPackages = with pkgs; [
