@@ -118,9 +118,9 @@ sudo systemctl start jellyfin qbittorrent
 
 ```
 scp "C:\Users\Aran\Desktop\backup\nixos-server-files\media\media-backup.tar.gz" hcg_leo@server:/home/hcg_leo/media-backup.tar.gz
-sudo systemctl stop jellyfin radarr sonarr prowlarr qbittorrent seerr
+sudo systemctl stop jellyfin qbittorrent
 sudo tar -xzvf ~/media-backup.tar.gz -C /
-sudo systemctl start jellyfin radarr sonarr prowlarr qbittorrent seerr
+sudo systemctl start jellyfin qbittorrent
 ```
 
 file structure is kept the same in the `.tar.gz` — cool.
