@@ -107,11 +107,11 @@ chmod -R g+rX /mnt/storage/music/<*>
 skip if you don't need one or already have one:
 
 ```
-sudo systemctl stop jellyfin radarr sonarr prowlarr qbittorrent seerr
+sudo systemctl stop jellyfin qbittorrent
 sudo tar -czvf ~/media-backup.tar.gz /var/lib/jellyfin /var/lib/radarr /var/lib/sonarr /var/lib/prowlarr /var/lib/qBittorrent /var/lib/seerr
 scp hcg_leo@server:/home/hcg_leo/media-backup.tar.gz "C:\Users\Aran\Desktop\backup\nixos-server-files\media"
 sudo rm media-backup.tar.gz
-sudo systemctl start jellyfin radarr sonarr prowlarr qbittorrent seerr
+sudo systemctl start jellyfin qbittorrent
 ```
 
 ### restore
