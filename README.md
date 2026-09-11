@@ -108,7 +108,7 @@ skip if you don't need one or already have one:
 
 ```
 sudo systemctl stop jellyfin qbittorrent
-sudo tar -czvf ~/media-backup.tar.gz /var/lib/jellyfin /var/lib/radarr /var/lib/sonarr /var/lib/prowlarr /var/lib/qBittorrent /var/lib/seerr
+sudo tar -czvf ~/media-backup.tar.gz /var/lib/jellyfin /var/lib/qBittorrent
 scp hcg_leo@server:/home/hcg_leo/media-backup.tar.gz "C:\Users\Aran\Desktop\backup\nixos-server-files\media"
 sudo rm media-backup.tar.gz
 sudo systemctl start jellyfin qbittorrent
@@ -123,7 +123,7 @@ sudo tar -xzvf ~/media-backup.tar.gz -C /
 sudo systemctl start jellyfin qbittorrent
 ```
 
-file structure is kept the same in the `.tar.gz` — cool.
+file structure is kept the same in the `.tar.gz` - cool.
 
 ### vpn for torrenting - im using mullvad
 
