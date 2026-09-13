@@ -4,10 +4,10 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./minecraft.nix
+      # ./minecraft.nix
+      # ./minecraft-backup.nix
       ./networking.nix
       ./alias.nix
-      ./minecraft-backup.nix
       ./media.nix
       ./vpn-torrent.nix
       ./duckdns.nix
@@ -17,7 +17,6 @@
   environment.systemPackages = with pkgs; [
   neovim
   git
-  btop
   ];
 
   # bootloader.

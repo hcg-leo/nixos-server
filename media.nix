@@ -31,7 +31,7 @@
     ];
   };
 
-  # qbittorrent - download client
+  # qbittorrent
   services.qbittorrent = {
     enable = true;
     openFirewall = true;

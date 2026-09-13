@@ -17,8 +17,8 @@ custom nixos server running on a hp laptop 15s-fq2xxx - just a minecraft and med
 ├── duckdns.nix
 ├── google-drive-backup.nix
 ├── media.nix
-├── minecraft-backup.nix
-├── minecraft.nix
+├── # minecraft-backup.nix
+├── # minecraft.nix
 ├── networking.nix.template
 └── vpn-torrent.nix.template
 ```
@@ -29,9 +29,9 @@ custom nixos server running on a hp laptop 15s-fq2xxx - just a minecraft and med
 - `abyss.nix` - css code for jellyfin theme
 - `alias.nix` - shell aliases for rebuilding, editing configs and managing the minecraft server
 - `duckdnd.nix` - static ip for the whole server
-- `minecraft.nix` - a paper server in a podman container, 6gb ram
+- `# minecraft.nix` - a paper server in a podman container, 6gb ram
 - `google-drive-backup.nix` - backup personal google drive to local server
-- `minecraft.nix` - a paper server in a podman container, 6gb ram, ports 25565/tcp + 24454/udp
+- `# minecraft.nix` - a paper server in a podman container, 6gb ram, ports 25565/tcp + 24454/udp
 - `minecraft-backup.nix` - nightly timer: stop the server, rclone sync `/var/lib/minecraft` to google drive, start it back up
 - `media.nix` - jellyfin + qbittorrent, plus the shared `media` group and storage under `/mnt/storage`
 - `networking.nix.template` - copy to `networking.nix`, fill in your wifi
@@ -94,7 +94,7 @@ sudo chmod 600 /root/secrets/rclone.conf
 
 ## media config
 
-### music
+### transfering music files (use spotDL)
 
 ```
 scp -r "C:\Users\Aran Thananjayan\Desktop\backup\music\*" hcg_leo@server:/mnt/storage/music
