@@ -92,7 +92,7 @@ sudo mv rclone.conf /root/secrets/
 sudo chmod 600 /root/secrets/rclone.conf
 ```
 
-## media config
+## media config - file transformation, intro skipper, media bar
 
 ### transfering music files (use spotDL)
 
