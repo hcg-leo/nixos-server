@@ -13,7 +13,6 @@
     "d /mnt/storage/movies 2775 root media -"
     "d /mnt/storage/music 2775 root media -"
     "d /mnt/storage/shows 2775 root media -"
-    "d /mnt/storage/downloads 2775 root media -"
   ];
 
   # jellyfin
@@ -37,5 +36,4 @@
     openFirewall = true;
     webuiPort = 8080;
   };
-
 }
