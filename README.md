@@ -55,14 +55,22 @@ sudo ln -s ~/nixos-server /etc/nixos
 sudo nixos-rebuild switch
 ```
 
+## duckdns
+
+```
+sudo mkdir -p /root/secrets
+vim duckdns-token
+sudo mv duckdns-token /root/secrets
+sudo chmod 600 /root/secrets/duckdns-token
+```
 ## minecraft server config
 
 ### plugins
 
-same `scp -r "local\path\*" user@ip:path` syntax applies to every transfer below. windows → linux example:
+same `scp -r "local\path\*" user@ip:path` syntax applies to every transfer below. windows to linux example:
 
 ```
-scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\plugins\*" hcg_leo@server:/var/lib/minecraft/plugins
+scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\plugins\*" hcg_leo@hcg-leo.duckdns.org:/var/lib/minecraft/plugins
 ```
 
 ### google drive backup
@@ -71,9 +79,8 @@ download rclone on the ssh machine, run `.\rclone.exe config`, choose:
 `n, gdrive, drive, *empty*, *empty*, 1, *empty*, n, y, n, y`
 
 ```
-sudo mkdir -p /root/secrets
 sudo chmod 700 /root/secrets
-scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\rclone\*" hcg_leo@server:/home/hcg_leo
+scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\rclone\*" hcg_leo@hcg-leo.duckdns.org:/home/hcg_leo
 sudo mv rclone.conf /root/secrets/
 sudo chmod 600 /root/secrets/rclone.conf
 ```
@@ -83,7 +90,7 @@ sudo chmod 600 /root/secrets/rclone.conf
 ### transfering music files (use spotDL)
 
 ```
-scp -r "C:\Users\Aran Thananjayan\Desktop\backup\music\*" hcg_leo@server:/mnt/storage/music
+scp -r "C:\Users\Aran Thananjayan\Desktop\backup\music\*" hcg_leo@hcg-leo.duckdns.org:/mnt/storage/music
 chmod -R g+rX /mnt/storage/music/*
 ```
 (replace `*` with the playlist name)
@@ -95,7 +102,7 @@ skip if you don't need one or already have one:
 ```
 sudo systemctl stop jellyfin qbittorrent
 sudo tar -czvf ~/media-backup.tar.gz /var/lib/jellyfin /var/lib/qBittorrent
-scp hcg_leo@server:/home/hcg_leo/media-backup.tar.gz "C:\Users\Aran\Desktop\backup\nixos-server-files\media"
+scp hcg_leo@hcg-leo.duckdns.org:/home/hcg_leo/media-backup.tar.gz "C:\Users\Aran\Desktop\backup\nixos-server-files\media"
 sudo rm media-backup.tar.gz
 sudo systemctl start jellyfin qbittorrent
 ```
@@ -103,7 +110,7 @@ sudo systemctl start jellyfin qbittorrent
 ### restore
 
 ```
-scp "C:\Users\Aran\Desktop\backup\nixos-server-files\media\media-backup.tar.gz" hcg_leo@server:/home/hcg_leo/media-backup.tar.gz
+scp "C:\Users\Aran\Desktop\backup\nixos-server-files\media\media-backup.tar.gz" hcg_leo@hcg-leo.duckdns.org:/home/hcg_leo/media-backup.tar.gz
 sudo systemctl stop jellyfin qbittorrent
 sudo tar -xzvf ~/media-backup.tar.gz -C /
 sudo systemctl start jellyfin qbittorrent
@@ -116,7 +123,7 @@ file structure is kept the same in the `.tar.gz` - cool.
 create a wireguard config from your vpn of choice, then:
 
 ```
-scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\media-vpn\*" hcg_leo@server:/home/hcg_leo
+scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\media-vpn\*" hcg_leo@hcg-leo.duckdns.org:/home/hcg_leo
 sudo mv mullvad.conf /root/secrets/
 sudo chmod 600 /root/secrets/mullvad.conf
 ```
