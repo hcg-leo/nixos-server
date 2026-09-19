@@ -1,10 +1,6 @@
 # nixos server configuration
 
-*self host!!*
-
-![nixos](https://img.shields.io/badge/nixos-26.05-5277c3?style=for-the-badge&logo=nixos) ![linux](https://img.shields.io/badge/linux-fcc624?style=for-the-badge&logo=linux) ![openssh](https://img.shields.io/badge/openssh-enabled-000000?style=for-the-badge&logo=openssh)
-
-custom nixos server running on a hp laptop 15s-fq2xxx
+*self host!!* - custom nixos server running on a hp laptop 15s-fq2xxx
 
 ### overview
 
