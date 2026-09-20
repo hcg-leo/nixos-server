@@ -1,0 +1,54 @@
+{ config, pkgs, ... }:
+
+{
+  services.couchdb = {
+    enable = true;
+
+    bindAddress = "127.0.0.1";
+    port = 5984;
+
+    adminUser = "obsidian";
+    adminPass = "CHANGE-ME-TO-SOMETHING-LONG";
+
+    extraConfigFiles = [
+      (pkgs.writeText "couchdb-livesync.ini" ''
+        [couchdb]
+        single_node = true
+        max_document_size = 50000000
+
+        [chttpd]
+        require_valid_user = true
+        max_http_request_size = 4294967296
+        enable_cors = true
+
+        [chttpd_auth]
+        require_valid_user = true
+        authentication_redirect = /_utils/session.html
+
+        [httpd]
+        WWW-Authenticate = Basic realm="couchdb"
+        ; couchdb 3.2+ reads enable_cors from [chttpd]; this line is
+        ; only here for older builds and is ignored on 3.2+
+        enable_cors = true
+
+        [cors]
+        origins = app://obsidian.md,capacitor://localhost,http://localhost
+        credentials = true
+        headers = accept, authorization, content-type, origin, referer
+        methods = GET,PUT,POST,HEAD,DELETE
+        max_age = 3600
+      '')
+    ];
+  };
+
+  services.caddy = {
+    enable = true;
+    virtualHosts."hcg-leo.duckdns.org".extraConfig = ''
+      reverse_proxy 127.0.0.1:5984 {
+        flush_interval -1
+      }
+    '';
+  };
+
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
+}
