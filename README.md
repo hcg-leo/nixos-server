@@ -61,7 +61,7 @@ sudo nixos-rebuild switch
 
 ```
 sudo mkdir -p /root/secrets
-vim duckdns-token
+nvim duckdns-token
 sudo mv duckdns-token /root/secrets
 sudo chmod 600 /root/secrets/duckdns-token
 ```
