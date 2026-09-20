@@ -2,7 +2,7 @@
 
 *self host!!* - custom nixos server running on a hp laptop 15s-fq2xxx
 
-### overview - duckdns, google drive backup, jellyfin + torrent + vpn binded to just qbittorrent, minecraft backup to google drive, minecraft server and obsidian sync 
+overview - duckdns, google drive backup, jellyfin + torrent + vpn binded to just qbittorrent, minecraft backup to google drive, minecraft server and obsidian sync 
 
 ```
 .
@@ -124,7 +124,7 @@ file structure is kept the same in the `.tar.gz` - cool.
 create a wireguard config from your vpn of choice, then:
 
 ```
-scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\media-vpn\*" hcg_leo@hcg-leo.duckdns.org:/home/hcg_leo
+scp -r "C:\Users\Aran Thananjayan\Desktop\backup\nixos-server-files\vpn\*" hcg_leo@hcg-leo.duckdns.org:/home/hcg_leo
 sudo mv mullvad.conf /root/secrets/
 sudo chmod 600 /root/secrets/mullvad.conf
 ```
