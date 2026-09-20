@@ -2,7 +2,7 @@
 
 *self host!!* - custom nixos server running on a hp laptop 15s-fq2xxx
 
-### overview
+### overview - duckdns, google drive backup, jellyfin + torrent + vpn binded to just qbittorrent, minecraft backup to google drive, minecraft server and obsidian sync 
 
 ```
 .
@@ -16,6 +16,7 @@
 ├── # minecraft-backup.nix
 ├── # minecraft.nix
 ├── networking.nix.template
+├── obsidian.nix.template
 └── vpn-torrent.nix.template
 ```
 
@@ -38,6 +39,11 @@ nano nixos-server/networking.nix
 ```
 cp ~/nixos-server/vpn-torrent.nix.template ~/nixos-server/vpn-torrent.nix
 nano ~/nixos-server/vpn-torrent.nix
+```
+
+```
+cp nixos-server/obsidian.nix.template nixos-server/obsidian.nix
+nano nixos-server/obsidian.nix
 ```
 
 ```
