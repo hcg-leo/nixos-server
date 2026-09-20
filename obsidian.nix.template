@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 
+# database name: obsidiannotes
 {
   services.couchdb = {
     enable = true;

@@ -65,9 +65,8 @@ vim duckdns-token
 sudo mv duckdns-token /root/secrets
 sudo chmod 600 /root/secrets/duckdns-token
 ```
-## minecraft server config
 
-### plugins
+### minecraft plugins
 
 same `scp -r "local\path\*" user@ip:path` syntax applies to every transfer below. windows to linux example:
 
@@ -75,9 +74,9 @@ same `scp -r "local\path\*" user@ip:path` syntax applies to every transfer below
 scp -r "C:\Users\Aran\Desktop\backup\nixos-server-files\plugins\*" hcg_leo@hcg-leo.duckdns.org:/var/lib/minecraft/plugins
 ```
 
-### google drive backup
+### google drive backup - using rclone
 
-download rclone on the ssh machine, run `.\rclone.exe config`, choose:
+download rclone from the ssh machine, run `.\rclone.exe config` though terminal, choose:
 `n, gdrive, drive, *empty*, *empty*, 1, *empty*, n, y, n, y`
 
 ```
