@@ -5,7 +5,6 @@
     [
       ./hardware-configuration.nix
       # ./minecraft.nix
-      # ./minecraft-backup.nix
       ./networking.nix
       ./alias.nix
       ./media.nix
